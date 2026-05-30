@@ -1,8 +1,44 @@
+import { useState, useEffect } from "react";
+import "./ProductList.css";
+import { useCart } from "../context/CartContext";
+
 function ProductList() {
+  const [products, setProducts] = useState([]);
+  const [filter, setFilter] = useState("alla");
+
+  const { addToCart } = useCart();
+
+  useEffect(() => {
+    fetch("http://localhost:5000/api/products")
+      .then((res) => res.json())
+      .then((data) => setProducts(data))
+      .catch((err) => console.log(err));
+  }, []);
+
+  const filteredProducts = products.filter((product) => {
+    if (filter === "alla") return true;
+    return product.category === filter;
+  });
+
   return (
-    <div>
-      <h1>ProductList</h1>
+    <div className="product-list">
+      <div className="filter-buttons">
+        <button onClick={() => setFilter("alla")}>All pasta</button>
+        <button onClick={() => setFilter("lang")}>Lång pasta</button>
+        <button onClick={() => setFilter("kort")}>Kort pasta</button>
+      </div>
+      <div className="products-grid">
+        {filteredProducts.map((product) => (
+          <div key={product._id} className="product-card">
+            <div className="product-image"></div>
+            <h3>{product.name}</h3>
+            <p>{product.price} kr</p>
+            <button onClick={() => addToCart(product)}>Lägg i varukorg</button>
+          </div>
+        ))}
+      </div>
     </div>
   );
 }
+
 export default ProductList;

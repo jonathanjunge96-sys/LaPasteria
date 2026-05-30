@@ -1,0 +1,91 @@
+.payment {
+  padding: 40px;
+  background-color: #FAF3E0;
+  min-height: 100vh;
+}
+
+.payment h1 {
+  font-size: 40px;
+  margin-bottom: 32px;
+}
+
+.payment-content {
+  display: flex;
+  gap: 40px;
+}
+
+.payment-form {
+  flex: 2;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.payment-form label {
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.payment-form input {
+  padding: 12px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 16px;
+  background-color: white;
+}
+
+.payment-methods {
+  display: flex;
+  gap: 16px;
+}
+
+.payment-methods button {
+  padding: 12px 32px;
+  border: 2px solid #333;
+  background: transparent;
+  cursor: pointer;
+  font-size: 16px;
+  border-radius: 4px;
+  transition: all 0.3s;
+}
+
+.payment-methods button.active {
+  background-color: #1B4332;
+  color: white;
+  border-color: #1B4332;
+}
+
+.confirm-btn {
+  padding: 14px;
+  background-color: #1B4332;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 18px;
+  margin-top: 16px;
+  transition: background-color 0.3s;
+}
+
+.confirm-btn:hover {
+  background-color: #2d6a4f;
+}
+
+.payment-summary {
+  flex: 1;
+  background-color: white;
+  padding: 24px;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  height: fit-content;
+}
+
+.payment-summary h3 {
+  font-size: 22px;
+  margin-bottom: 16px;
+}
+
+.payment-summary p {
+  font-size: 16px;
+  margin-bottom: 8px;
+}
