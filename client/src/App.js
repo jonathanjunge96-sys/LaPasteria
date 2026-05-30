@@ -1,5 +1,6 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { CartProvider } from "./context/CartContext";
+import { AuthProvider } from "./context/AuthContext";
 import Navbar from "./components/NavBar";
 import Home from "./pages/Home";
 import ProductList from "./pages/ProductList";
@@ -10,22 +11,25 @@ import Login from "./pages/Login";
 import Register from "./pages/Register";
 import NotFound from "./pages/NotFound";
 
+
 function App() {
   return (
     <BrowserRouter>
-      <CartProvider>
-        <Navbar />
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/products" element={<ProductList />} />
-          <Route path="/cart" element={<ShoppingCart />} />
-          <Route path="/payment" element={<Payment />} />
-          <Route path="/confirmation" element={<Confirmation />} />
-          <Route path="/login" element={<Login />} />
-          <Route path="/register" element={<Register />} />
-          <Route path="*" element={<NotFound />} />
-        </Routes>
-      </CartProvider>
+      <AuthProvider>
+        <CartProvider>
+          <Navbar />
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/products" element={<ProductList />} />
+            <Route path="/cart" element={<ShoppingCart />} />
+            <Route path="/payment" element={<Payment />} />
+            <Route path="/confirmation" element={<Confirmation />} />
+            <Route path="/login" element={<Login />} />
+            <Route path="/register" element={<Register />} />
+            <Route path="*" element={<NotFound />} />
+          </Routes>
+        </CartProvider>
+      </AuthProvider>
     </BrowserRouter>
   );
 }

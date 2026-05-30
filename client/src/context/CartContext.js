@@ -2,6 +2,7 @@ import { createContext, useState, useContext } from "react";
 
 const CartContext = createContext();
 
+// 
 export function CartProvider({ children }) {
   const [cartItems, setCartItems] = useState([]);
 
@@ -21,6 +22,11 @@ export function CartProvider({ children }) {
 
   const removeFromCart = (id) => {
     setCartItems((prev) => prev.filter((item) => item._id !== id));
+  };
+
+  // Rensar hela kundvagnenm, anropas från AuthContext vid utloggning.
+  const clearCart = () => {
+    setCartItems([]);
   };
 
   const updateQuantity = (id, quantity) => {
@@ -46,6 +52,7 @@ export function CartProvider({ children }) {
         removeFromCart,
         updateQuantity,
         totalPrice,
+        clearCart
       }}
     >
       {children}
@@ -56,3 +63,5 @@ export function CartProvider({ children }) {
 export function useCart() {
   return useContext(CartContext);
 }
+
+// CRUD-logik för kundvagnen. 
