@@ -1,10 +1,12 @@
 import { useState, useEffect } from "react";
 import "./ProductList.css";
 import { useCart } from "../context/CartContext";
+import { useFavorites } from "../context/FavoritesContext";
 
 function ProductList() {
   const [products, setProducts] = useState([]);
   const [filter, setFilter] = useState("alla");
+  const { toggleFavorite, isFavorite } = useFavorites();
 
   const { addToCart } = useCart();
 
@@ -31,6 +33,12 @@ function ProductList() {
         {filteredProducts.map((product) => (
           <div key={product._id} className="product-card">
             <div className="product-image"></div>
+            <button
+              className={`favorite-btn ${isFavorite(product._id) ? "favorited" : ""}`}
+              onClick={() => toggleFavorite(product)}
+            >
+              {isFavorite(product._id) ? "❤️" : "🤍"}
+            </button>
             <h3>{product.name}</h3>
             <p>{product.price} kr</p>
             <button onClick={() => addToCart(product)}>Lägg i varukorg</button>
