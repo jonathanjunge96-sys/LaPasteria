@@ -1,10 +1,12 @@
 import { useState } from "react";
 import { useCart } from "../context/CartContext";
+import { useAuth } from "../context/AuthContext";
 import { useNavigate } from "react-router-dom";
 import "./Payment.css";
 
 function Payment() {
   const { cartItems, totalPrice } = useCart();
+  const { token } = useAuth();
   const navigate = useNavigate();
 
   const [formData, setFormData] = useState({
@@ -19,7 +21,7 @@ function Payment() {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     if (
       !formData.name ||
@@ -30,7 +32,38 @@ function Payment() {
       alert("Vänligen fyll i alla fält!");
       return;
     }
-    navigate("/confirmation");
+    try {
+      const res = await fetch("http://localhost:5000/api/orders", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${token}`,
+        },
+        body: JSON.stringify({
+          items: cartItems.map((item) => ({
+            product_id: item._id,
+            name: item.name,
+            price: item.price,
+            quantity: item.quantity,
+          })),
+          totalPrice,
+          shippingInfo: {
+            name: formData.name,
+            email: formData.email,
+            phone: formData.phone,
+            address: formData.address,
+          },
+          paymentMethod: formData.paymentMethod,
+        }),
+      });
+      if (res.ok) {
+        navigate("/confirmation");
+      } else {
+        alert("Något gick fel med beställningen!");
+      }
+    } catch (err) {
+      console.log(err);
+    }
   };
 
   return (
@@ -79,7 +112,7 @@ function Payment() {
             </button>
             <button
               type="button"
-              className={formData.paymentMethod === "swish" ? "active" : ""}
+              className={formData.paymentMethod === "swish" ? "active" : ""} //Terery operator som skiftar css klass. Vald knapp blir grön och andra blir transparent.
               onClick={() =>
                 setFormData({ ...formData, paymentMethod: "swish" })
               }
