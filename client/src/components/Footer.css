@@ -1,0 +1,38 @@
+.footer {
+  background-color: #808080;
+  color: white;
+  text-align: center;
+}
+
+.footer-flag {
+  display: flex;
+  height: 4px;
+  width: 100%;
+}
+
+.footer-flag .flag-green {
+  background-color: #009246;
+  flex: 1;
+}
+
+.footer-flag .flag-white {
+  background-color: #ffffff;
+  flex: 1;
+}
+
+.footer-flag .flag-red {
+  background-color: #CE2B37;
+  flex: 1;
+}
+
+.footer-content {
+  padding: 24px 40px;
+  display: flex;
+  justify-content: center;
+  gap: 40px;
+}
+
+.footer-content p {
+  font-size: 14px;
+  margin: 0;
+}
