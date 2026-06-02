@@ -63,10 +63,6 @@
   color: black;
 }
 
-.logout-btn:hover {
-  text-decoration: none;
-}
-
 .cart-badge {
   background-color: #CE2B37;
   color: white;
