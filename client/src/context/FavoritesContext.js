@@ -1,10 +1,17 @@
-import { createContext, useState, useContext } from "react";
+import { createContext, useState, useContext, useEffect } from "react";
 
 const FavoritesContext = createContext();
 
-// CRUD-logik för favoriter
+// CRUD-funktionalitet för favoriter
 export function FavoritesProvider({ children }) {
-  const [favorites, setFavorites] = useState([]);
+  const [favorites, setFavorites] = useState(
+    JSON.parse(localStorage.getItem("favorites")) || [],
+  );
+
+  //Sparar favoriter i localStorage varje gång de ändras
+  useEffect(() => {
+    localStorage.setItem("favorites", JSON.stringify(favorites));
+  }, [favorites]);
 
   const addFavorite = (product) => {
     setFavorites((prev) => {

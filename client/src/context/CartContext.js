@@ -1,10 +1,18 @@
-import { createContext, useState, useContext } from "react";
+import { createContext, useState, useContext, useEffect } from "react";
 
 const CartContext = createContext();
 
-// 
+//
 export function CartProvider({ children }) {
-  const [cartItems, setCartItems] = useState([]);
+  const [cartItems, setCartItems] = useState(
+    JSON.parse(localStorage.getItem("cartItems")) || [],
+  );
+
+  useEffect(() => {
+    localStorage.setItem("cartItems", JSON.stringify(cartItems));
+  }, [cartItems]);
+
+  //Sparar här för att varukorgen ska vara global. Inte som payment.jsx
 
   const addToCart = (product) => {
     setCartItems((prev) => {
@@ -52,7 +60,7 @@ export function CartProvider({ children }) {
         removeFromCart,
         updateQuantity,
         totalPrice,
-        clearCart
+        clearCart,
       }}
     >
       {children}
@@ -64,4 +72,4 @@ export function useCart() {
   return useContext(CartContext);
 }
 
-// CRUD-logik för kundvagnen. 
+// CRUD-logik för kundvagnen.
