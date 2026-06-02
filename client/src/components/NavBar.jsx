@@ -5,12 +5,13 @@ import "./NavBar.css";
 
 function Navbar() {
   const { isLoggedIn, logout } = useAuth();
-  const { clearCart } = useCart();
+  const { clearCart, cartItems } = useCart();
   const navigate = useNavigate();
+  const cartCount = cartItems.reduce((sum, item) => sum + item.quantity, 0);
 
   const handleLogout = () => {
     logout();
-    clearCart(); // rensar varukorgen till nästa användare
+    clearCart();
     navigate("/login");
   };
 
@@ -24,11 +25,14 @@ function Navbar() {
       </div>
       <div className="navbar-links">
         <Link to="/products">Produkter</Link>
-        <Link to="/cart">Varukorg</Link>
+        <Link to="/cart">
+          Varukorg
+          {cartCount > 0 && <span className="cart-badge">{cartCount}</span>}
+        </Link>
         {isLoggedIn ? (
-          <button className="logout-btn" onClick={handleLogout}>
+          <Link to="/login" className="logout-btn" onClick={handleLogout}>
             Logga ut
-          </button>
+          </Link>
         ) : (
           <Link to="/login">Logga in</Link>
         )}
