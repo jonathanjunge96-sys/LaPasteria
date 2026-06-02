@@ -7,6 +7,9 @@ function ShoppingCart() {
 
   return (
     <div className="cart">
+      <Link to="/products" className="back-btn">
+        Tillbaka
+      </Link>
       <h1>Varukorg</h1>
       {cartItems.length === 0 ? (
         <p>

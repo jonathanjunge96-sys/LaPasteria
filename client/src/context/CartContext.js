@@ -12,7 +12,7 @@ export function CartProvider({ children }) {
     localStorage.setItem("cartItems", JSON.stringify(cartItems));
   }, [cartItems]);
 
-  //Sparar här för att varukorgen ska vara global. Inte som payment.jsx
+  //Sparar här för att varukorgen ska vara global. Inte som payment.jsx 
 
   const addToCart = (product) => {
     setCartItems((prev) => {
@@ -32,7 +32,7 @@ export function CartProvider({ children }) {
     setCartItems((prev) => prev.filter((item) => item._id !== id));
   };
 
-  // Rensar hela kundvagnenm, anropas från AuthContext vid utloggning.
+  // Rensar hela kundvagnenm, anropas från AuthContext vid utloggning
   const clearCart = () => {
     setCartItems([]);
   };

@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { useCart } from "../context/CartContext";
 import { useAuth } from "../context/AuthContext";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 import "./Payment.css";
 
 function Payment() {
@@ -9,28 +9,31 @@ function Payment() {
   const { token } = useAuth();
   const navigate = useNavigate();
 
- const [formData, setFormData] = useState(
-    JSON.parse(localStorage.getItem('paymentForm')) || {
+  const [formData, setFormData] = useState(
+    JSON.parse(localStorage.getItem("paymentForm")) || {
       name: "",
       email: "",
       phone: "",
       address: "",
       paymentMethod: "kort",
-    }
+    },
   );
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
-   useEffect(() => {
-     
-   }, [formData]);
-  
+  useEffect(() => {}, [formData]);
+
   // Spara formulärdata i localStorage så det finns kvar vid refresh
- const handleSubmit = async (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    localStorage.setItem('paymentForm', JSON.stringify(formData));
-    if (!formData.name || !formData.email || !formData.phone || !formData.address) {
+    localStorage.setItem("paymentForm", JSON.stringify(formData));
+    if (
+      !formData.name ||
+      !formData.email ||
+      !formData.phone ||
+      !formData.address
+    ) {
       alert("Vänligen fyll i alla fält!");
       return;
     }
@@ -66,11 +69,14 @@ function Payment() {
     } catch (err) {
       console.log(err);
     }
-  }
+  };
 
   return (
     <div className="payment">
       <h1>Betalning</h1>
+      <Link to="/cart" className="back-btn">
+        Tillbaka
+      </Link>
       <div className="payment-content">
         <form className="payment-form" onSubmit={handleSubmit}>
           <label>Fullständigt namn:</label>

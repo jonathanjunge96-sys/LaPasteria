@@ -25,6 +25,7 @@
 .navbar-links {
   display: flex;
   gap: 24px;
+  align-items: center;
 }
 
 .navbar-links a {
@@ -58,9 +59,19 @@
 }
 
 .logout-btn {
-  background: none;
-  border: none;
-  cursor: pointer;
-  font-size: 16px;
+  text-decoration: none;
   color: black;
+}
+
+.logout-btn:hover {
+  text-decoration: none;
+}
+
+.cart-badge {
+  background-color: #CE2B37;
+  color: white;
+  border-radius: 50%;
+  padding: 2px 7px;
+  font-size: 12px;
+  margin-left: 6px;
 }

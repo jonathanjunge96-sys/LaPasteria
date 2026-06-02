@@ -113,3 +113,19 @@
 .checkout-btn:hover {
   background-color: #2d6a4f;
 }
+
+.back-btn {
+  display: inline-block;
+  padding: 14px 32px;
+  background-color: #1B4332;
+  color: white !important;
+  text-decoration: none;
+  font-size: 18px;
+  width: fit-content;
+  border-radius: 4px;
+  transition: background-color 0.3s;
+}
+
+.back-btn:hover {
+  background-color: #2d6a4f;
+}

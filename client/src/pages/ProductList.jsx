@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import "./ProductList.css";
 import { useCart } from "../context/CartContext";
 import { useFavorites } from "../context/FavoritesContext";
+import { Link } from "react-router-dom";
 
 function ProductList() {
   const [products, setProducts] = useState([]);
@@ -24,6 +25,9 @@ function ProductList() {
 
   return (
     <div className="product-list">
+      <Link to="/" className="back-btn">
+       Tillbaka
+      </Link>
       <div className="filter-buttons">
         <button onClick={() => setFilter("alla")}>All pasta</button>
         <button onClick={() => setFilter("lang")}>Lång pasta</button>
