@@ -71,3 +71,21 @@
   font-size: 12px;
   margin-left: 6px;
 }
+
+@media (max-width: 768px) {
+  .navbar {
+    padding: 12px 20px;
+  }
+
+  .logo-la, .logo-pasteria {
+    font-size: 18px;
+  }
+
+  .navbar-links {
+    gap: 12px;
+  }
+
+  .navbar-links a, .logout-btn {
+    font-size: 14px;
+  }
+}

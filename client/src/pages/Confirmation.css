@@ -52,3 +52,17 @@
 .continue-btn:hover {
   background-color: #2d6a4f;
 }
+
+@media (max-width: 768px) {
+  .confirmation {
+    padding: 20px;
+  }
+
+  .confirmation h1 {
+    font-size: 32px;
+  }
+
+  .confirmation-summary {
+    width: 100%;
+  }
+}

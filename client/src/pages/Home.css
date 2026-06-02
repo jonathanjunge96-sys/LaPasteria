@@ -99,3 +99,26 @@
 .popular-card button:hover {
   background-color: #2d6a4f;
 }
+
+@media (max-width: 768px) {
+  .hero {
+    padding: 0 20px;
+    min-height: 300px;
+  }
+
+  .hero-content h1 {
+    font-size: 36px;
+  }
+
+  .hero-content p {
+    font-size: 18px;
+  }
+
+  .popular {
+    padding: 40px 20px;
+  }
+
+  .popular-grid {
+    grid-template-columns: 1fr;
+  }
+}

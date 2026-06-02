@@ -101,3 +101,25 @@
 .back-btn:hover {
   text-decoration: underline;
 }
+
+@media (max-width: 768px) {
+  .payment {
+    padding: 20px;
+  }
+
+  .payment-content {
+    flex-direction: column;
+  }
+
+  .payment-form {
+    width: 100%;
+  }
+
+  .payment-summary {
+    width: 100%;
+  }
+
+  .payment-methods {
+    flex-direction: column;
+  }
+}

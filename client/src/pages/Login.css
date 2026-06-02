@@ -67,3 +67,10 @@
   color: #1B4332;
   font-weight: 600;
 }
+
+@media (max-width: 768px) {
+  .login-card {
+    width: 100%;
+    padding: 20px;
+  }
+}

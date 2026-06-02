@@ -129,3 +129,22 @@
 .back-btn:hover {
   background-color: #2d6a4f;
 }
+
+@media (max-width: 768px) {
+  .cart {
+    padding: 20px;
+  }
+
+  .cart-content {
+    flex-direction: column;
+  }
+
+  .cart-item {
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+
+  .cart-summary {
+    width: 100%;
+  }
+}

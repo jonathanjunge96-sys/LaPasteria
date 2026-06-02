@@ -102,3 +102,18 @@
 .back-btn:hover {
   background-color: #2d6a4f;
 }
+
+@media (max-width: 768px) {
+  .product-list {
+    padding: 20px;
+  }
+
+  .filter-buttons {
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+
+  .products-grid {
+    grid-template-columns: 1fr;
+  }
+}
