@@ -8,21 +8,18 @@ const validateToken = asyncHandler(async (req, res, next) => {
   if (authHeader && authHeader.startsWith("Bearer")) {
     token = authHeader.split(" ")[1];
     if (!token) {
-      res.status(401);
-      throw new Error("Not authorized, no token");
+      return next();
     }
     jwt.verify(token, process.env.ACCESS_TOKEN_SECRET, (err, decoded) => {
       if (err) {
-        res.status(401);
-        throw new Error("Not authorized");
+        return next();
       }
       req.user = decoded.user;
       next();
     });
   } else {
-    res.status(401);
-    throw new Error("Not authorized, no token");
-  } // Ger fel ifall om det inte finns någon header
+    next();
+  }
 });
 
 module.exports = validateToken;

@@ -4,7 +4,7 @@ const orderSchema = mongoose.Schema(
   {
     user_id: {
       type: mongoose.Schema.Types.ObjectId,
-      required: true,
+      required: false, // Så att gästbeställningar godkänns
       ref: "User",
     },
     items: [

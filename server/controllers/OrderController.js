@@ -13,7 +13,7 @@ const createOrder = asyncHandler(async (req, res) => {
   }
 
   const order = await Order.create({
-    user_id: req.user.id,
+    user_id: req.user ? req.user.id : null, // Till gäst
     items,
     totalPrice,
     shippingInfo,

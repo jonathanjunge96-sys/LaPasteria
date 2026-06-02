@@ -42,8 +42,8 @@ function Payment() {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
-          Authorization: `Bearer ${token}`,
-        },
+          ...(token && { Authorization: `Bearer ${token}` }),
+        }, 
         body: JSON.stringify({
           items: cartItems.map((item) => ({
             product_id: item._id,
