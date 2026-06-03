@@ -30,7 +30,11 @@ function Home() {
         <div className="popular-grid">
           {popularProducts.map((product) => (
             <div key={product._id} className="popular-card">
-              <div className="popular-image"></div>
+              <img
+                src={product.image}
+                alt={product.name}
+                className="product-image" //lägger till bilder via servern
+              />
               <h3>{product.name}</h3>
               <p>{product.price} kr</p>
               <button onClick={() => addToCart(product)}>
