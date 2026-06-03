@@ -26,7 +26,7 @@ function ProductList() {
   return (
     <div className="product-list">
       <Link to="/" className="back-btn">
-       Tillbaka
+        Tillbaka
       </Link>
       <div className="filter-buttons">
         <button onClick={() => setFilter("alla")}>All pasta</button>
@@ -36,7 +36,11 @@ function ProductList() {
       <div className="products-grid">
         {filteredProducts.map((product) => (
           <div key={product._id} className="product-card">
-            <div className="product-image"></div>
+            <img
+              src={product.image}
+              alt={product.name}
+              className="product-image" //lägger till bilder via servern
+            />
             <button
               className={`favorite-btn ${isFavorite(product._id) ? "favorited" : ""}`}
               onClick={() => toggleFavorite(product)}

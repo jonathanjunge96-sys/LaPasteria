@@ -40,4 +40,22 @@ const createProduct = asyncHandler(async (req, res) => {
   res.status(201).json(product);
 });
 
-module.exports = { getProducts, getProduct, createProduct };
+// @desc UPDATE product
+// @route PUT /api/products/:id
+// @access public
+const updateProduct = asyncHandler(async (req, res) => {
+    const product = await Product.findByIdAndUpdate(
+        req.params.id,
+        req.body,
+        { new: true }
+    );
+    if (!product) {
+        res.status(404);
+        throw new Error("Product not found");
+    }
+    res.status(200).json(product);
+}); //La till när jag uppdaterade med bilder per product
+
+
+
+module.exports = { getProducts, getProduct, createProduct, updateProduct };
