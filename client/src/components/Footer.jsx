@@ -10,7 +10,7 @@ function Footer() {
       </div>
       <div className="footer-content">
         <p>contact@lapasteria.se</p>
-        <p>© 2025 LaPasteria</p>
+        <p>© 2026 LaPasteria</p>
       </div>
     </footer>
   );

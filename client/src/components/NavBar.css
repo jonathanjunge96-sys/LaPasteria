@@ -1,20 +1,26 @@
 .navbar {
-  position: relative;
-  background-color: #808080;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+  background-color: #4a4a4a;
   padding: 16px 40px;
   display: flex;
   justify-content: space-between;
   align-items: center;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.3);
 }
 
 .navbar-logo a {
   text-decoration: none;
-  color: black;
+  color: white;
 }
 
 .logo-la {
   font-size: 24px;
   font-weight: 300;
+  color: black;
 }
 
 .logo-pasteria {
@@ -30,8 +36,16 @@
 
 .navbar-links a {
   text-decoration: none;
-  color: black;
+  color: white;
   font-size: 16px;
+  transition: color 0.3s;
+  padding-right: 24px;
+  border-right: 1px solid rgba(255,255,255,0.3);
+}
+
+.navbar-links a:last-child {
+  border-right: none;
+  padding-right: 0;
 }
 
 .navbar-flag {
@@ -60,7 +74,17 @@
 
 .logout-btn {
   text-decoration: none;
-  color: black;
+  color: white !important;
+  padding-right: 0 !important;
+  border-right: none !important;
+}
+
+.logout-btn:hover {
+  color: #e0e0e0 !important;
+}
+
+.navbar-links a:hover {
+  color: #e0e0e0;
 }
 
 .cart-badge {
