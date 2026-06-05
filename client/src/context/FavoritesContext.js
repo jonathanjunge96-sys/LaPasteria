@@ -49,3 +49,4 @@ export function FavoritesProvider({ children }) {
 export function useFavorites() {
   return useContext(FavoritesContext);
 }
+

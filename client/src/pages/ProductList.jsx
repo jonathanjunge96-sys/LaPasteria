@@ -8,6 +8,7 @@ function ProductList() {
   const [products, setProducts] = useState([]);
   const [filter, setFilter] = useState("alla");
   const { toggleFavorite, isFavorite } = useFavorites();
+  const {error, setError} = useState(null);
 
   const { addToCart } = useCart();
 
@@ -15,7 +16,9 @@ function ProductList() {
     fetch("http://localhost:5000/api/products")
       .then((res) => res.json())
       .then((data) => setProducts(data))
-      .catch((err) => console.log(err));
+      .catch((err) =>
+        setError("Kunde inte ansluta till servern. Försök igen senare."),
+      );
   }, []);
 
   const filteredProducts = products.filter((product) => {
